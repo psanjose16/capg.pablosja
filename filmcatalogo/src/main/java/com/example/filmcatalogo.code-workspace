@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../.."
+		},
+		{
+			"path": "../../../../../../demo-boot01"
+		},
+		{
+			"path": "../../../../../../GildedRose-Refactoring-Kata-main"
+		}
+	],
+	"settings": {}
+}
