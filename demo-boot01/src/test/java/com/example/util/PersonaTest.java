@@ -1,25 +1,25 @@
 package com.example.util;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+
+
 public class PersonaTest {
-	@Test
-	@Tag("smoke")
-	void createPersona() {
-		var p = new Persona(1, "Pepe");
-		
-		assertNotNull(p);
-		assertAll("Contructor", 
-				() -> assertEquals(1, p.id),
-				() -> assertEquals("Pepe", p.nombre, "nombre"),
-				() -> assertEquals("Pepe", p.apellidos, "apellidos")
-				);
-		assertEquals(1, p.id);
-		assertEquals("Pepe", p.nombre);
-	}
+
+    @Test
+    public void testPersonaConstructor() {
+        Persona persona = new Persona(1, "Juan");
+        assertEquals(1, persona.id);
+        assertEquals("Juan", persona.nombre);
+        assertEquals("Pepe", persona.apellidos); // Default value
+    }
+
+    @Test
+    public void testDefaultValues() {
+        Persona persona = new Persona(2, "Maria");
+        assertEquals(2, persona.id);
+        assertEquals("Maria", persona.nombre);
+        assertEquals("Pepe", persona.apellidos); // Default value
+    }
 }
