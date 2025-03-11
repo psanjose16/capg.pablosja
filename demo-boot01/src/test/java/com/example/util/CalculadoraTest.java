@@ -1,16 +1,22 @@
 package com.example.util;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import com.example.util.Calculadora;
+import com.example.test.utils.Smoke;
 
 class CalculadoraTest {
 	Calculadora calc;
@@ -40,6 +46,8 @@ class CalculadoraTest {
 		class OK {
 			@Test
 			@DisplayName("Suma dos enteros")
+			//@Tag("Smoke")
+			@Smoke
 			void testSuma() {
 //		var calc = new Calculadora();
 
@@ -65,6 +73,18 @@ class CalculadoraTest {
 
 				assertEquals(0.1, calc.suma(1, -0.9));
 			}
+			
+			@DisplayName("Suma dos numeros")
+			@ParameterizedTest(name = "{0} + {1} = {2}")
+			@CsvSource({ "1,2,3", "2,-1,1", "-1,2,1","-2,-1,-3","0,0,0","0.1,0.2,0.3" })
+			void testSumaParametrizada(double operando1, double operando2, double esperado) {
+				var calc = new Calculadora();
+
+				var actual = calc.suma(operando1, operando2);
+
+				assertEquals(esperado, actual);
+			}
+
 		}
 
 		@Nested
@@ -72,6 +92,7 @@ class CalculadoraTest {
 		class KO {
 			@Test
 			@DisplayName("Suma dos enteros grandes")
+			@Disabled
 			void testSumaInt() {
 				var calc = new Calculadora();
 
