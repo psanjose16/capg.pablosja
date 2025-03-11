@@ -1,4 +1,4 @@
-package ioc;
+package com.example.ioc;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
