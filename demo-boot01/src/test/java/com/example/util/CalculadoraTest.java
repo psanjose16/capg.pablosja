@@ -67,14 +67,14 @@ public class CalculadoraTest {
 		void suplanta2() {
 			var calc = mock(Calculadora.class);
 			when(calc.suma(anyInt(), anyInt())).thenReturn(4);
-			var obj = new Factura(calc);
+			var obj = new Factura(calc, null);
 			var actual = obj.calcularTotal(2, 2);
 			assertEquals(4, actual);
 			verify(calc).suma(2, 2);
 		}
 		@Test
 		void Integracion() {
-			var obj = new Factura(new Calculadora());
+			var obj = new Factura(new Calculadora(), null);
 			var actual = obj.calcularTotal(2, 2);
 			assertEquals(4, actual);
 		}
