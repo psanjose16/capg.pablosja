@@ -1,8 +1,13 @@
 package com.example.util;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.*;
 
 public class CalculadoraTest {
 
@@ -44,4 +49,33 @@ public class CalculadoraTest {
         assertThrows(ArithmeticException.class, () -> calc.divide(1, 0));
         assertThrows(ArithmeticException.class, () -> calc.divide(1.0, 0.0));
     }
-}
+
+    @Nested
+	@DisplayName("Suplanta")
+	class Suplantaciones {
+		@Test
+		void suplanta() {
+			var calc = mock(Calculadora.class);
+			when(calc.suma(anyInt(), anyInt())).thenReturn(3).thenReturn(5);
+
+			var actual = calc.suma(2, 2);
+			assertEquals(3, actual);
+			assertEquals(5, calc.suma(2, 2));
+			assertEquals(5, calc.suma(7,3));
+		}
+		@Test
+		void suplanta2() {
+			var calc = mock(Calculadora.class);
+			when(calc.suma(anyInt(), anyInt())).thenReturn(4);
+			var obj = new Factura(calc);
+			var actual = obj.calcularTotal(2, 2);
+			assertEquals(4, actual);
+			verify(calc).suma(2, 2);
+		}
+		@Test
+		void Integracion() {
+			var obj = new Factura(new Calculadora());
+			var actual = obj.calcularTotal(2, 2);
+			assertEquals(4, actual);
+		}
+}}
