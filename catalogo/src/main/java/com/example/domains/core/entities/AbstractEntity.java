@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -11,6 +12,7 @@ import jakarta.validation.Validator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@MappedSuperclass
 public abstract class AbstractEntity<E> {
 	private static final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 	

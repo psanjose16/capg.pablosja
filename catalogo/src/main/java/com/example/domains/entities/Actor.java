@@ -1,10 +1,33 @@
 package com.example.domains.entities;
 
 import java.io.Serializable;
-import jakarta.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+
+import org.springframework.data.domain.AfterDomainEventPublication;
+import org.springframework.data.domain.DomainEvents;
+
+import com.example.domains.core.entities.AbstractEntity;
+import com.example.domains.events.DomainEvent;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 
 /**
@@ -14,7 +37,7 @@ import java.util.Objects;
 @Entity
 @Table(name="actor")
 @NamedQuery(name="Actor.findAll", query="SELECT a FROM Actor a")
-public class Actor implements Serializable {
+public class Actor extends AbstractEntity<Actor> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,38 +46,45 @@ public class Actor implements Serializable {
 	private int actorId;
 
 	@Column(name="first_name", nullable=false, length=45)
+	@NotBlank
+	@Size(max=45, min=2)
 	private String firstName;
 
 	@Column(name="last_name", nullable=false, length=45)
+	@Size(max=45, min=2)
 	private String lastName;
 
 	@Column(name="last_update", insertable=false, updatable=false, nullable=false)
+	@PastOrPresent
 	private Timestamp lastUpdate;
 
-	//bi-directional many-to-one association to FilmActor
-	@OneToMany(mappedBy="actor")
-	private List<FilmActor> filmActors;
+	@OneToMany(mappedBy="actor", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<FilmActor> filmActors = new ArrayList<>();
 
 	public Actor() {
 	}
-
-	public Actor(int actorId, String firstName, String lastName) {
-		super();
-		this.actorId = actorId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-
+	
 	public Actor(int actorId) {
 		super();
 		this.actorId = actorId;
 	}
+
+	public Actor(int actorId, String firstName, String lastName) {
+		super();
+		setActorId(actorId);
+		setFirstName(firstName);
+		setLastName(lastName);
+	}
+
 
 	public int getActorId() {
 		return this.actorId;
 	}
 
 	public void setActorId(int actorId) {
+		if (this.actorId == actorId) return;
+		onChange("ActorId", this.actorId, actorId);
 		this.actorId = actorId;
 	}
 
@@ -63,6 +93,8 @@ public class Actor implements Serializable {
 	}
 
 	public void setFirstName(String firstName) {
+		if (this.firstName == firstName) return;
+		onChange("FirstName", this.firstName, firstName);
 		this.firstName = firstName;
 	}
 
@@ -71,6 +103,8 @@ public class Actor implements Serializable {
 	}
 
 	public void setLastName(String lastName) {
+		if (this.lastName == lastName) return;
+		onChange("LastName", this.lastName, lastName);
 		this.lastName = lastName;
 	}
 
@@ -125,6 +159,34 @@ public class Actor implements Serializable {
 	public String toString() {
 		return "Actor [actorId=" + actorId + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdate="
 				+ lastUpdate + "]";
+	}
+
+	public void jubilate() {
+		
+	}
+	
+	public void recibePremio(String premio) {
+		
+	}
+
+	@Transient
+	@JsonIgnore
+	private final Collection<Object> domainEvents = new ArrayList<>();
+
+	protected void onChange(String property, Object old, Object current) {
+		domainEvents.add(new DomainEvent(getClass().getName(), actorId, property, old, current));
+	}
+
+	@DomainEvents
+	Collection<Object> domainEvents() {
+		if(domainEvents.size() == 0)
+			System.err.println("Sin eventos de dominio");
+		return domainEvents;
+	}
+
+	@AfterDomainEventPublication
+	void clearDomainEvents() {
+		domainEvents.clear();
 	}
 
 }
