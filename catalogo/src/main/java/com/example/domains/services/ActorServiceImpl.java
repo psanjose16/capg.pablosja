@@ -112,5 +112,10 @@ public class ActorServiceImpl implements ActorService {
 	public List<Actor> novedades(Timestamp fecha) {
 		return dao.findByLastUpdateGreaterThanEqualOrderByLastUpdate(fecha);
 	}
+
+    public void awards() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'awards'");
+    }
 	
 }

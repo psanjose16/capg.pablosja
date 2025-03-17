@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BooleanSupplier;
 
 import org.springframework.data.domain.AfterDomainEventPublication;
 import org.springframework.data.domain.DomainEvents;
@@ -188,5 +189,15 @@ public class Actor extends AbstractEntity<Actor> implements Serializable {
 	void clearDomainEvents() {
 		domainEvents.clear();
 	}
+
+    public void setAwarded(boolean b) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setAwarded'");
+    }
+
+    public BooleanSupplier isAwarded() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isAwarded'");
+    }
 
 }

@@ -534,7 +534,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 		throw new UnsupportedOperationException("Unimplemented method 'setRating'");
 	}
 
-    public void setFilmActors(ArrayList arrayList) {
+	public void setFilmActors(ArrayList<FilmActor> arrayList) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setFilmActors'");
     }
@@ -554,7 +554,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
         throw new UnsupportedOperationException("Unimplemented method 'removeFilmActor'");
     }
 
-    public void setFilmCategories(ArrayList arrayList) {
+	public void setFilmCategories(ArrayList<FilmCategory> arrayList) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setFilmCategories'");
     }
