@@ -127,12 +127,4 @@ public class Actor implements Serializable {
 				+ lastUpdate + "]";
 	}
 
-	public void jubilate() {
-		// pon active a false
-		// pon fecha de baja a la fecha actual
-	}
-
-	public void premioRecibido(String premio) {
-		// ...
-	}
 }
