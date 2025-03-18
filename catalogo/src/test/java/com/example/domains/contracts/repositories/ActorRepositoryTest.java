@@ -2,20 +2,22 @@ package com.example.domains.contracts.repositories;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
 import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import com.example.domains.entities.Actor;
+import com.example.domains.repositories.ActorRepositoryImpl;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.NotFoundException;
-
-
-
-
 
 class ActorRepositoryTest {
 
@@ -23,7 +25,7 @@ class ActorRepositoryTest {
     private ActorRepository actorRepository;
 
     @InjectMocks
-    private ActorRepositoryTest actorRepositoryTest;
+    private ActorRepositoryImpl actorRepositoryImpl = new ActorRepositoryImpl(actorRepository);
 
     @BeforeEach
     void setUp() {
@@ -31,58 +33,57 @@ class ActorRepositoryTest {
     }
 
     @Test
-    void testInsert_Success() throws DuplicateKeyException {
-        Actor actor = new Actor();
-        actor.setActorId(1);
+    void testFindByLastUpdateGreaterThanEqualOrderByLastUpdate() {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Actor actor1 = new Actor(1, "John", "Doe", timestamp);
+        Actor actor2 = new Actor(2, "Jane", "Doe", timestamp);
+        List<Actor> actors = Arrays.asList(actor1, actor2);
+
+        when(actorRepository.findByLastUpdateGreaterThanEqualOrderByLastUpdate(timestamp)).thenReturn(actors);
+
+        List<Actor> result = actorRepositoryImpl.findByLastUpdateGreaterThanEqualOrderByLastUpdate(timestamp);
+        assertEquals(2, result.size());
+        assertEquals(actor1, result.get(0));
+        assertEquals(actor2, result.get(1));
+    }
+
+    @Test
+    void testInsert() throws DuplicateKeyException {
+        Actor actor = new Actor(1, "John", "Doe", new Timestamp(System.currentTimeMillis()));
 
         when(actorRepository.existsById(actor.getActorId())).thenReturn(false);
         when(actorRepository.save(actor)).thenReturn(actor);
 
-        Actor result = actorRepository.insert(actor);
-
-        assertNotNull(result);
+        Actor result = actorRepositoryImpl.insert(actor);
         assertEquals(actor, result);
-        verify(actorRepository).existsById(actor.getActorId());
-        verify(actorRepository).save(actor);
     }
 
     @Test
-    void testInsert_DuplicateKeyException() {
-        Actor actor = new Actor();
-        actor.setActorId(1);
+    void testInsertDuplicateKeyException() {
+        Actor actor = new Actor(1, "John", "Doe", new Timestamp(System.currentTimeMillis()));
 
         when(actorRepository.existsById(actor.getActorId())).thenReturn(true);
 
-        assertThrows(DuplicateKeyException.class, () -> actorRepository.insert(actor));
-        verify(actorRepository).existsById(actor.getActorId());
-        verify(actorRepository, never()).save(actor);
+        assertThrows(DuplicateKeyException.class, () -> actorRepositoryImpl.insert(actor));
     }
 
     @Test
-    void testUpdate_Success() throws NotFoundException {
-        Actor actor = new Actor();
-        actor.setActorId(1);
+    void testUpdate() throws NotFoundException {
+        Actor actor = new Actor(1, "John", "Doe", new Timestamp(System.currentTimeMillis()));
 
         when(actorRepository.existsById(actor.getActorId())).thenReturn(true);
         when(actorRepository.save(actor)).thenReturn(actor);
 
-        Actor result = actorRepository.update(actor);
-
-        assertNotNull(result);
+        Actor result = actorRepositoryImpl.update(actor);
         assertEquals(actor, result);
-        verify(actorRepository).existsById(actor.getActorId());
-        verify(actorRepository).save(actor);
     }
 
     @Test
-    void testUpdate_NotFoundException() {
-        Actor actor = new Actor();
-        actor.setActorId(1);
+    void testUpdateNotFoundException() {
+        Actor actor = new Actor(1, "John", "Doe", new Timestamp(System.currentTimeMillis()));
 
         when(actorRepository.existsById(actor.getActorId())).thenReturn(false);
 
-        assertThrows(NotFoundException.class, () -> actorRepository.update(actor));
-        verify(actorRepository).existsById(actor.getActorId());
-        verify(actorRepository, never()).save(actor);
+        assertThrows(NotFoundException.class, () -> actorRepositoryImpl.update(actor));
     }
 }

@@ -29,7 +29,7 @@ public class GreaterThanValidator implements ConstraintValidator<GreaterThan, Ob
 				return false;
 			if(minorValue instanceof Comparable<?> c)
 				if (majorValue instanceof Comparable<?> comparableMajorValue) {
-					return c.compareTo(minorValue.getClass().cast(majorValue)) < 0;
+					return c.compareTo(c.getClass().cast(majorValue)) < 0;
 				}
 				return false;
 			if(minorValue instanceof Number c)

@@ -9,4 +9,6 @@ import com.example.domains.entities.Actor;
 public interface ActorService extends ProjectionDomainService<Actor, Integer> {
 	void repartePremios();
 	List<Actor> novedades(Timestamp fecha);
+    Actor insert(Actor actor);
+    Actor update(Actor actor);
 }

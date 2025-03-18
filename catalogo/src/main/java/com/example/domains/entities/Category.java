@@ -58,7 +58,11 @@ public class Category extends AbstractEntity<Category> implements Serializable {
 		this.name = name;
 	}
 
-	public int getCategoryId() {
+	public Category(int i, String string, Timestamp timestamp) {
+        //TODO Auto-generated constructor stub
+    }
+
+    public int getCategoryId() {
 		return this.categoryId;
 	}
 

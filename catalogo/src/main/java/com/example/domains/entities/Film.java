@@ -115,7 +115,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 	}
 	
 	@Converter
-	private static class RatingConverter implements AttributeConverter<Rating, String> {
+	static class RatingConverter implements AttributeConverter<Rating, String> {
 		@Override
 		public String convertToDatabaseColumn(Rating rating) {
 			return rating == null ? null : rating.getValue();
@@ -128,7 +128,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 	}
 	
 	@Converter
-	private static class SpecialFeatureConverter implements AttributeConverter<Set<SpecialFeature>, String> {
+	public static class SpecialFeatureConverter implements AttributeConverter<Set<SpecialFeature>, String> {
 	    @Override
 	    public String convertToDatabaseColumn(Set<SpecialFeature> attribute) {
 	        if (attribute == null || attribute.size() == 0) {

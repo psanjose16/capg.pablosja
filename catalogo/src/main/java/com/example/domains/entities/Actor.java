@@ -79,7 +79,11 @@ public class Actor extends AbstractEntity<Actor> implements Serializable {
 	}
 
 
-	public int getActorId() {
+	public Actor(int i, String string, String string2, Timestamp timestamp) {
+        //TODO Auto-generated constructor stub
+    }
+
+    public int getActorId() {
 		return this.actorId;
 	}
 

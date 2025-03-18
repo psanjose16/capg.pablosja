@@ -69,7 +69,11 @@ public class Language extends AbstractEntity<Language> implements Serializable {
 		this.name = name;
 	}
 
-	public int getLanguageId() {
+	public Language(int i, String string, Timestamp timestamp) {
+        //TODO Auto-generated constructor stub
+    }
+
+    public int getLanguageId() {
 		return this.languageId;
 	}
 
