@@ -1,6 +1,8 @@
 package com.example.demobatch.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Data
 public class Persona {
