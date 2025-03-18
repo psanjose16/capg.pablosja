@@ -90,6 +90,10 @@ public class DemoApplication implements CommandLineRunner {
 		dao.findByActorIdGreaterThan(200, ActorShort.class).forEach(o -> System.err.println(o.getId() + " " + o.getNombre()));
 	}
 	
+//dao.findAll(PageRequest.of(1, 10, Sort.by("actorId"))).forEach(System.err::printIn);
+//dao.findAllBy(ActorDTO.class);
+//dao.findAllBy();
+
 ////	@Autowired //(required = false)
 ////	Servicio srv;
 //	
