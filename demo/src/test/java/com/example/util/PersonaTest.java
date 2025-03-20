@@ -25,7 +25,3 @@ public class PersonaTest {
 }
 
 package com.example.util;
-
-
-
-
