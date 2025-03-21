@@ -31,7 +31,6 @@ import jakarta.transaction.Transactional;
                 version = "1.0",
                 description = "Ejemplo de Microservicio utilizando la base de datos **Sakila**.",
                 license = @License(name = "Apache 2.0", url = "https://www.apache.org/licenses/LICENSE-2.0.html"),
-                contact = @Contact(name = "Javier Martín", url = "https://github.com/jmagit", email = "support@example.com")
         ),
         externalDocs = @ExternalDocumentation(description = "Documentación del proyecto", url = "https://github.com/jmagit/BOOT20250305/tree/main/catalogo")
 )

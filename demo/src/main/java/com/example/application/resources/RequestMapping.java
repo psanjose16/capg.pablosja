@@ -4,6 +4,4 @@ public @interface RequestMapping {
 
 	String value();
 
-	String value();
-
 }
