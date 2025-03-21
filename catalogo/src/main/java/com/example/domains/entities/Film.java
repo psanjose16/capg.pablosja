@@ -2,7 +2,7 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -115,7 +115,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 	}
 	
 	@Converter
-	static class RatingConverter implements AttributeConverter<Rating, String> {
+	private static class RatingConverter implements AttributeConverter<Rating, String> {
 		@Override
 		public String convertToDatabaseColumn(Rating rating) {
 			return rating == null ? null : rating.getValue();
@@ -128,7 +128,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 	}
 	
 	@Converter
-	public static class SpecialFeatureConverter implements AttributeConverter<Set<SpecialFeature>, String> {
+	private static class SpecialFeatureConverter implements AttributeConverter<Set<SpecialFeature>, String> {
 	    @Override
 	    public String convertToDatabaseColumn(Set<SpecialFeature> attribute) {
 	        if (attribute == null || attribute.size() == 0) {
@@ -159,7 +159,7 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 	private String description;
 
 	@Column(name = "last_update", insertable = false, updatable = false, nullable = false)
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
 	@Positive
 	private Integer length;
@@ -300,11 +300,11 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 		this.description = description;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 
@@ -528,50 +528,5 @@ public class Film extends AbstractEntity<Film> implements Serializable {
 		filmActors.forEach(o -> o.prePersiste());
 		filmCategories.forEach(o -> o.prePersiste());
 	}
-
-	public void setRating(String string) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'setRating'");
-	}
-
-	public void setFilmActors(ArrayList<FilmActor> arrayList) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setFilmActors'");
-    }
-
-    public void addFilmActor(FilmActor actor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addFilmActor'");
-    }
-
-    public ArrayList<Object> getFilmActors() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFilmActors'");
-    }
-
-    public void removeFilmActor(FilmActor actor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFilmActor'");
-    }
-
-	public void setFilmCategories(ArrayList<FilmCategory> arrayList) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setFilmCategories'");
-    }
-
-    public void addFilmCategory(FilmCategory category) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addFilmCategory'");
-    }
-
-    public ArrayList<Object> getFilmCategories() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFilmCategories'");
-    }
-
-    public void removeFilmCategory(FilmCategory category) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFilmCategory'");
-    }
 
 }

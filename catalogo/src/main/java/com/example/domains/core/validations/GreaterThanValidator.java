@@ -27,11 +27,8 @@ public class GreaterThanValidator implements ConstraintValidator<GreaterThan, Ob
 			var majorValue = majorFld.get(value);
 			if(minorValue == null || majorValue == null || minorValue == majorValue || minorValue.getClass() != majorValue.getClass()) 
 				return false;
-			if(minorValue instanceof Comparable<?> c)
-				if (majorValue instanceof Comparable<?> comparableMajorValue) {
-					return c.compareTo(c.getClass().cast(majorValue)) < 0;
-				}
-				return false;
+			if(minorValue instanceof Comparable c)
+				return c.compareTo(majorValue) < 0;
 			if(minorValue instanceof Number c)
 				return c.doubleValue() < ((Number)majorValue).doubleValue();
 			return minorValue.toString().compareTo(majorValue.toString()) < 0;

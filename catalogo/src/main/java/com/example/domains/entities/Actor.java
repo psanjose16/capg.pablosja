@@ -1,18 +1,17 @@
 package com.example.domains.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.BooleanSupplier;
 
 import org.springframework.data.domain.AfterDomainEventPublication;
 import org.springframework.data.domain.DomainEvents;
 
 import com.example.domains.core.entities.AbstractEntity;
-import com.example.domains.events.DomainEvent;
+import com.example.domains.event.DomainEvent;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -49,16 +48,19 @@ public class Actor extends AbstractEntity<Actor> implements Serializable {
 	@Column(name="first_name", nullable=false, length=45)
 	@NotBlank
 	@Size(max=45, min=2)
+//	@NIF
 	private String firstName;
 
 	@Column(name="last_name", nullable=false, length=45)
 	@Size(max=45, min=2)
+//	@Pattern(regexp = "[A-Z]+", message = "Tiene que estar en mayusculas")
 	private String lastName;
 
 	@Column(name="last_update", insertable=false, updatable=false, nullable=false)
 	@PastOrPresent
-	private Timestamp lastUpdate;
+	private Date lastUpdate;
 
+	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="actor", fetch = FetchType.LAZY)
 	@JsonBackReference
 	private List<FilmActor> filmActors = new ArrayList<>();
@@ -79,11 +81,7 @@ public class Actor extends AbstractEntity<Actor> implements Serializable {
 	}
 
 
-	public Actor(int i, String string, String string2, Timestamp timestamp) {
-        //TODO Auto-generated constructor stub
-    }
-
-    public int getActorId() {
+	public int getActorId() {
 		return this.actorId;
 	}
 
@@ -113,11 +111,11 @@ public class Actor extends AbstractEntity<Actor> implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Timestamp getLastUpdate() {
+	public Date getLastUpdate() {
 		return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Timestamp lastUpdate) {
+	public void setLastUpdate(Date lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
 
@@ -193,15 +191,5 @@ public class Actor extends AbstractEntity<Actor> implements Serializable {
 	void clearDomainEvents() {
 		domainEvents.clear();
 	}
-
-    public void setAwarded(boolean b) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAwarded'");
-    }
-
-    public BooleanSupplier isAwarded() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isAwarded'");
-    }
 
 }
