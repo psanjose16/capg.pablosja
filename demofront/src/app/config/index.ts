@@ -1,1 +1,1 @@
-export * from './config'; // Update the path to the correct module
+export * from './correct-path'; // Update the path to the correct module
