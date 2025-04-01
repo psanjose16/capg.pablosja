@@ -20,7 +20,7 @@ public class CatalogoServiceImpl implements CatalogoService {
 	@Autowired
 	private FilmService filmSrv;
 	@Autowired
-	private ActorService actorSrv;
+	private ActorService artorSrv;
 	@Autowired
 	private CategoryService categorySrv;
 	@Autowired
@@ -33,7 +33,7 @@ public class CatalogoServiceImpl implements CatalogoService {
 			fecha = Date.from(Instant.now().minusSeconds(36000));
 		return new NovedadesDTO(
 				filmSrv.novedades(fecha).stream().map(item -> new FilmShortDTO(item.getFilmId(), item.getTitle())).toList(), 
-				actorSrv.novedades(fecha).stream().map(item -> ActorDTO.from(item)).toList(), 
+				artorSrv.novedades(fecha).stream().map(item -> ActorDTO.from(item)).toList(), 
 				categorySrv.novedades(fecha), 
 				languageSrv.novedades(fecha)
 				);

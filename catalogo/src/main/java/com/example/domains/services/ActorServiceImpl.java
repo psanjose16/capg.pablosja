@@ -94,7 +94,7 @@ public class ActorServiceImpl implements ActorService {
 	}
 
 	@Override
-	@EmitEntityDeleted(entityName = "Actores")
+	@EmitEntityDeleted(entityName = "Actore")
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}

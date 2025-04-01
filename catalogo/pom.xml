@@ -12,7 +12,7 @@
 	<artifactId>catalogo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>catalogo</name>
-	<description>Catalogo de peliculas Sakila</description>
+	<description>Film catalogue with Sakila</description>
 	<url/>
 	<licenses>
 		<license/>
