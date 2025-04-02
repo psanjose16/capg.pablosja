@@ -2,6 +2,7 @@ export const environment = {
   production: false,
   ERROR_LEVEL: 99,
   apiUrl: 'http://localhost:4321/api/',
+  apiURL: 'http://localhost:4321/apii/',
   securityApiURL: 'http://localhost:4321/api/',
   defaultUsername: 'adm@example.com',
   defaultPassword: 'P@$$w0rd',

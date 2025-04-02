@@ -5,4 +5,5 @@ export const environment = {
   securityApiURL: '/auth/',
   defaultUsername: 'emp@example.com',
   defaultPassword: 'P@$$w0rd',
+  apiURL: '/api/',
 };
