@@ -29,7 +29,7 @@ export class DemosComponent {
   public readonly invisible = computed<boolean>(() => !this.visible())
   public readonly estetica = signal({ importante: true, urgente: true, error: false })
 
-  constructor(public vm: NotificationService, out: LoggerService) { }
+  constructor(public vm: NotificationService, public out: LoggerService) { }
 
   public get Fecha(): string { return this.fecha.toISOString(); }
   public set Fecha(value: string) {

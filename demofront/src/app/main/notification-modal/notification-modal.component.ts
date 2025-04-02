@@ -1,18 +1,14 @@
-import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { Component } from '@angular/core';
+import { NotificationService } from 'src/app/common-services';
+
 @Component({
   selector: 'app-notification-modal',
-  standalone: true,
-  imports: [NgClass],
+  imports: [ NgClass ],
   templateUrl: './notification-modal.component.html',
-  styleUrls: ['./notification-modal.component.css']
+  styleUrl: './notification-modal.component.css'
 })
 export class NotificationModalComponent {
-  constructor(private vm: NotificationService) {}
-
-  public get VM() {
-    return this.vm;
-  }
+  constructor(private vm: NotificationService) { }
+  public get VM() { return this.vm; }
 }
-
-    public get VM() { return this.vm; }
