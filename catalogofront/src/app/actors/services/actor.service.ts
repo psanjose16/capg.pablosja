@@ -18,4 +18,8 @@ export class ActorService {
     }
     return this.http.get<Actor[]>(this.baseUrl, { params });
   }
+
+getActorById(id: number): Observable<Actor> {
+  return this.http.get<Actor>(`${this.baseUrl}/${id}`);
+  }
 }

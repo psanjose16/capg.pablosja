@@ -1,0 +1,9 @@
+<div *ngIf="actor">
+  <h2>{{ actor?.firstName }} {{ actor?.lastName }}</h2>
+  <p>ID: {{ actor?.actorId }}</p>
+  <!-- Add other relevant details here -->
+</div>
+
+<div *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>

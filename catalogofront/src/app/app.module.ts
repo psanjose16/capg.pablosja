@@ -9,6 +9,5 @@ import { ActorsModule } from './actors/actors.module';
   declarations: [],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent],
   providers: [],
-  // Removed bootstrap array as AppComponent is a standalone component
 })
 export class AppModule {}
