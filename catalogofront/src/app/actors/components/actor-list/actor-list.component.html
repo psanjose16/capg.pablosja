@@ -1,0 +1,17 @@
+<div>
+  <button (click)="changeMode('largo')">Detailed Mode</button>
+  <button (click)="changeMode('short')">Short Mode</button>
+</div>
+
+<div>
+  <ul>
+    <li *ngFor="let actor of actors">
+      {{ actor.firstName }} {{ actor.lastName }}
+    </li>
+  </ul>
+</div>
+
+<div>
+  <button (click)="previousPage()" [disabled]="page === 1">Previous</button>
+  <button (click)="nextPage()">Next</button>
+</div>
