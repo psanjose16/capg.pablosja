@@ -6,13 +6,15 @@ import { ERROR_LEVEL, LoggerService } from '@my/core';
 import { environment } from 'src/environments/environment';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ajaxWaitInterceptor } from './main';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     LoggerService,
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withComponentInputBindin()),
+    provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(withInterceptors([ ajaxWaitInterceptor ])),
+    provideAnimationsAsync(),
   ]
 };

@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpContextToken, HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { NotificationService } from '../common/notification.service';
-import { LoggerService } from '../common/logger.service';
 import { environment } from 'src/environments/environment';
+import { LoggerService } from '@my/core';
+import { NotificationService } from '../common-services';
 
 export type ModoCRUD = 'list' | 'add' | 'edit' | 'view' | 'delete';
 export const AUTH_REQUIRED = new HttpContextToken<boolean>(() => false);
