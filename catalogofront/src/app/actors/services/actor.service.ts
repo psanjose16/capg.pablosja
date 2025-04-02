@@ -22,4 +22,9 @@ export class ActorService {
 getActorById(id: number): Observable<Actor> {
   return this.http.get<Actor>(`${this.baseUrl}/${id}`);
   }
+
+createActor(actor: Actor): Observable<any> {
+    return this.http.post(this.baseUrl, actor);
+  }
+
 }

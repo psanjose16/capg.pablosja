@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ActorListComponent } from './components/actor-list/actor-list.component';
 import { ActorDetailsComponent } from './components/actor-details/actor-details.component';
+import { ActorFormComponent } from './components/actor-form/actor-form.component';
 import { ActorService } from './services/actor.service';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ActorListComponent, ActorDetailsComponent],
+  imports: [CommonModule, FormsModule, ActorListComponent, ActorDetailsComponent, ActorFormComponent],
   providers: [ActorService],
-  exports: [ActorListComponent, ActorDetailsComponent]
+  exports: [ActorListComponent, ActorDetailsComponent, ActorFormComponent]
 })
 export class ActorsModule {}
