@@ -9,5 +9,5 @@ import com.example.domains.entities.Category;
 
 public interface CategoryRepository extends ListCrudRepository<Category, Integer> {
 	List<Category> findAllByOrderByName();
-	List<Category> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Date fecha);
+	List<Category> findByLastUpdateGreaterThanEqualOrderByLastUpdate(Date date);
 }

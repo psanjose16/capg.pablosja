@@ -15,59 +15,65 @@ import com.example.exceptions.NotFoundException;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-	private CategoryRepository dao;
+    private CategoryRepository repository;
 
-	public CategoryServiceImpl(CategoryRepository dao) {
-		this.dao = dao;
-	}
+    public CategoryServiceImpl(CategoryRepository repository) {
+        this.repository = repository;
+    }
 
-	@Override
-	public List<Category> getAll() {
-		return dao.findAllByOrderByName();
-	}
+    @Override
+    public List<Category> getAll() {
+        return repository.findAllByOrderByName();
+    }
 
-	@Override
-	public Optional<Category> getOne(Integer id) {
-		return dao.findById(id);
-	}
+    @Override
+    public Optional<Category> getOne(Integer id) {
+        return repository.findById(id);
+    }
 
-	@Override
-	public Category add(Category item) throws DuplicateKeyException, InvalidDataException {
-		if(item == null)
-			throw new InvalidDataException("No puede ser nulo");
-		if(item.isInvalid())
-			throw new InvalidDataException(item.getErrorsMessage(), item.getErrorsFields());
-		if(item.getCategoryId() != 0 && dao.existsById(item.getCategoryId()))
-			throw new DuplicateKeyException("Ya existe");
-		return dao.save(item);
-	}
+    @Override
+    public Category add(Category item) throws DuplicateKeyException, InvalidDataException {
+        if (item == null) {
+            throw new InvalidDataException("Cannot be null");
+        }
+        if (item.isInvalid()) {
+            throw new InvalidDataException(item.getErrorsMessage(), item.getErrorsFields());
+        }
+        if (item.getCategoryId() != 0 && repository.existsById(item.getCategoryId())) {
+            throw new DuplicateKeyException("Already exists");
+        }
+        return repository.save(item);
+    }
 
-	@Override
-	public Category modify(Category item) throws NotFoundException, InvalidDataException {
-		if(item == null)
-			throw new InvalidDataException("No puede ser nulo");
-		if(item.isInvalid())
-			throw new InvalidDataException(item.getErrorsMessage(), item.getErrorsFields());
-		if(!dao.existsById(item.getCategoryId()))
-			throw new NotFoundException();
-		return dao.save(item);
-	}
+    @Override
+    public Category modify(Category item) throws NotFoundException, InvalidDataException {
+        if (item == null) {
+            throw new InvalidDataException("Cannot be null");
+        }
+        if (item.isInvalid()) {
+            throw new InvalidDataException(item.getErrorsMessage(), item.getErrorsFields());
+        }
+        if (!repository.existsById(item.getCategoryId())) {
+            throw new NotFoundException();
+        }
+        return repository.save(item);
+    }
 
-	@Override
-	public void delete(Category item) throws InvalidDataException {
-		if(item == null)
-			throw new InvalidDataException("No puede ser nulo");
-		dao.delete(item);
-	}
+    @Override
+    public void delete(Category item) throws InvalidDataException {
+        if (item == null) {
+            throw new InvalidDataException("Cannot be null");
+        }
+        repository.delete(item);
+    }
 
-	@Override
-	public void deleteById(Integer id) {
-		dao.deleteById(id);
-	}
+    @Override
+    public void deleteById(Integer id) {
+        repository.deleteById(id);
+    }
 
-	@Override
-	public List<Category> novedades(Date fecha) {
-		return dao.findByLastUpdateGreaterThanEqualOrderByLastUpdate(fecha);
-	}
-	
+    @Override
+    public List<Category> novedades(Date date) {
+        return repository.findByLastUpdateGreaterThanEqualOrderByLastUpdate(date);
+    }
 }
