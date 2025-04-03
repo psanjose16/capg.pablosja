@@ -1,0 +1,16 @@
+<!-- film-list.component.html -->
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<div *ngIf="!errorMessage">
+  <button (click)="switchMode('short')">Short Mode</button>
+  <button (click)="switchMode('details')">Details Mode</button>
+  <ul>
+    <li *ngFor="let film of films">
+      <h2>{{ film.title }}</h2>
+      <p *ngIf="mode === 'details'">{{ film.description }}</p>
+      <p *ngIf="mode === 'details'">Rating: {{ film.rating }}</p>
+      <p *ngIf="mode === 'details'">Length: {{ film.length }} minutes</p>
+    </li>
+  </ul>
+</div>
