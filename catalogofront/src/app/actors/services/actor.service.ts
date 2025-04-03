@@ -35,4 +35,8 @@ createActor(actor: Actor): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
+  getActorFilms(id: number): Observable<Film[]> {
+    return this.http.get<Film[]>(`${this.baseUrl}/${id}/pelis`);
+  }
+  
 }
