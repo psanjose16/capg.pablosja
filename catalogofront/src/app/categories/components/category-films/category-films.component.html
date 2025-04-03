@@ -1,0 +1,10 @@
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<div *ngIf="!errorMessage">
+  <ul>
+    <li *ngFor="let film of films">
+      <h2>{{ film.titulo }}</h2>
+    </li>
+  </ul>
+</div>

@@ -7,11 +7,13 @@ import { ActorsModule } from './actors/actors.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { CategoryListComponent } from './categories/components/category-list/category-list.component';
 import { CategoryService } from './categories/services/category.service';
+import { CategoryFilmsComponent } from './categories/components/category-films/category-films.component';
+
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent],
   providers: [],
 })
 export class AppModule {}
