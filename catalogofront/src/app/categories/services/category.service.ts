@@ -26,6 +26,12 @@ export class CategoryService {
     );
   }
 
+  createCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(this.apiUrl, category).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error);
     return throwError('Something went wrong; please try again later.');

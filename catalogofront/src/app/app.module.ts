@@ -8,12 +8,12 @@ import { CatalogModule } from './catalog/catalog.module';
 import { CategoryListComponent } from './categories/components/category-list/category-list.component';
 import { CategoryService } from './categories/services/category.service';
 import { CategoryFilmsComponent } from './categories/components/category-films/category-films.component';
-
+import { CategoryCreateComponent } from './categories/components/category-create/category-create.component';
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent],
   providers: [],
 })
 export class AppModule {}
