@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'actors', component: ActorListComponent },
   { path: 'actors/:id', component: ActorDetailsComponent },
   { path: 'create-actor', component: ActorFormComponent },
+  { path: 'edit-actor/:id', component: ActorFormComponent },
 ];
 
 @NgModule({

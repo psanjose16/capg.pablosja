@@ -1,0 +1,25 @@
+<div *ngIf="actor">
+  <h2>Edit Actor</h2>
+  <form (ngSubmit)="updateActor()">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" [(ngModel)]="actor?.firstName" name="firstName" required>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" [(ngModel)]="actor?.lastName" name="lastName" required>
+    </div>
+    <!-- Add other relevant fields -->
+    <button type="submit">Update Actor</button>
+  </form>
+  <div *ngIf="successMessage">
+    <p>{{ successMessage }}</p>
+  </div>
+  <div *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
+
+<div *ngIf="errorMessage && !actor">
+  <p>{{ errorMessage }}</p>
+</div>

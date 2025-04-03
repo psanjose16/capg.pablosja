@@ -27,4 +27,8 @@ createActor(actor: Actor): Observable<any> {
     return this.http.post(this.baseUrl, actor);
   }
 
+  updateActor(id: number, actor: Actor): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, actor);
+  }
+
 }
