@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/actors', pathMatch: 'full' },
-  { path: '**', redirectTo: '/actors' }
+  { path: '**', redirectTo: '/actors' },
+  { path: '', redirectTo: '/catalog', pathMatch: 'full' },
+  { path: '**', redirectTo: '/catalog' }
+
 ];
 
 @NgModule({

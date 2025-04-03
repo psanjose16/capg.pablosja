@@ -1,0 +1,15 @@
+<div *ngIf="catalogResources">
+  <h2>Catalog Resources</h2>
+  <ul>
+    <li><a [routerLink]="catalogResources._links.actores.href">Actors</a></li>
+    <li><a [routerLink]="catalogResources._links.peliculas.href">Movies</a></li>
+    <li><a [routerLink]="catalogResources._links.categorias.href">Categories</a></li>
+    <li><a [routerLink]="catalogResources._links.idiomas.href">Languages</a></li>
+    <li><a [routerLink]="catalogResources._links.novedades.href">News</a></li>
+    <li><a [routerLink]="catalogResources._links.documentacion.href">Documentation</a></li>
+  </ul>
+</div>
+
+<div *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>

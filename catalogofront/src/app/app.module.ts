@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ActorsModule } from './actors/actors.module';
+import { CatalogModule } from './catalog/catalog.module';
 
 @NgModule({
   declarations: [],
