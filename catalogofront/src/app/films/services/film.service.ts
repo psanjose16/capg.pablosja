@@ -73,6 +73,12 @@ export class FilmService {
     );
   }
 
+  likeFilm(id: number): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/${id}/like`, {}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error);
     return throwError('Something went wrong; please try again later.');

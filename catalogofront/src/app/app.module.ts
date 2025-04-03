@@ -21,11 +21,12 @@ import { FilmSearchComponent } from './films/components/film-search/film-search.
 import { FilmEditableComponent } from './films/components/film-editable/film-editable.component';
 import { FilmActorsComponent } from './films/components/film-actors/film-actors.component';
 import { FilmCategoriesComponent } from './films/components/film-categories/film-categories.component';
+import { FilmLikeComponent } from './films/components/film-like/film-like.component';
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent, FilmCreateComponent, FilmEditComponent, FilmDeleteComponent, FilmSearchComponent, FilmEditableComponent, FilmActorsComponent, FilmCategoriesComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent, FilmCreateComponent, FilmEditComponent, FilmDeleteComponent, FilmSearchComponent, FilmEditableComponent, FilmActorsComponent, FilmCategoriesComponent, FilmLikeComponent],
   providers: [],
 })
 export class AppModule {}
