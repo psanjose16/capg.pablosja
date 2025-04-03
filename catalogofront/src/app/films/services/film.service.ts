@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { FilmShortDTO, FilmDetailsDTO } from './film.model';
+import { FilmShortDTO } from '../models/film-short.model';
+import { FilmDetailsDTO } from '../models/film.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,12 @@ export class FilmService {
 
   getAllFilms(mode: string = 'short'): Observable<FilmShortDTO[] | FilmDetailsDTO[]> {
     return this.http.get<FilmShortDTO[] | FilmDetailsDTO[]>(`${this.apiUrl}?mode=${mode}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getFilmDetails(id: number): Observable<FilmDetailsDTO> {
+    return this.http.get<FilmDetailsDTO>(`${this.apiUrl}/${id}`).pipe(
       catchError(this.handleError)
     );
   }

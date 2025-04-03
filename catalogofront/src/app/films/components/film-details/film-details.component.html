@@ -1,0 +1,9 @@
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<div *ngIf="film && !errorMessage">
+  <h2>{{ film.title }}</h2>
+  <p>{{ film.description }}</p>
+  <p>Rating: {{ film.rating }}</p>
+  <p>Length: {{ film.length }} minutes</p>
+</div>

@@ -13,11 +13,12 @@ import { CategoryEditComponent } from './categories/components/category-edit/cat
 import { CategoryDeleteComponent } from './categories/components/category-delete/category-delete.component';
 import { FilmListComponent } from './films/components/film-list/film-list.component';
 import { FilmService } from './films/services/film.service';
+import { FilmDetailsComponent } from './films/components/film-details/film-details.component';
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent],
   providers: [],
 })
 export class AppModule {}
