@@ -15,4 +15,9 @@ export class NewsService {
     let params = new HttpParams().set('fecha', date);
     return this.http.get<NewsItem[]>(this.baseUrl, { params });
   }
+
+  getFilteredNews(date: string): Observable<NewsItem[]> {
+    let params = new HttpParams().set('fecha', date);
+    return this.http.get<NewsItem[]>(this.baseUrl, { params });
+  }
 }

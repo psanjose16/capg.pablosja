@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [CatalogResourcesComponent, NewsComponent],
   imports: [CommonModule, FormsModule],
-  providers: [CatalogService, NewsComponent],
+  providers: [CatalogService, NewsComponent, NewsService],
   exports: [CatalogResourcesComponent, NewsComponent]
 })
 export class CatalogModule {}

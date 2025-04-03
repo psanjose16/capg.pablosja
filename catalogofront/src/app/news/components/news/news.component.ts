@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../services/news.service';
-import { NewsItem } from '../models/news-item.model';
+import { NewsItem } from '../../models/news-item.model';
+import { NewsService } from '../../services/news.service';
 
 @Component({
   selector: 'app-news',
@@ -20,11 +20,11 @@ export class NewsComponent implements OnInit {
 
   fetchNews(): void {
     this.newsService.getLatestNews(this.filterDate).subscribe(
-      (data) => {
+      (data: NewsItem[]) => {
         this.newsItems = data;
         this.errorMessage = null;
       },
-      (error) => {
+      (error: any) => {
         this.newsItems = [];
         this.errorMessage = 'Error fetching news';
         console.error('Error fetching news', error);
@@ -33,7 +33,12 @@ export class NewsComponent implements OnInit {
   }
 
   onDateChange(event: any): void {
-    this.filterDate = event.target.value;
-    this.fetchNews();
+    const selectedDate = event.target.value;
+    if (selectedDate) {
+      this.filterDate = selectedDate;
+      this.fetchNews();
+    } else {
+      this.errorMessage = 'Invalid date';
+    }
   }
 }

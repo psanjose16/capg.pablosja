@@ -4,7 +4,7 @@ import { CatalogResourcesComponent } from './components/catalog-resources/catalo
 import { NewsComponent } from '../news/components/news/news.component';
 
 const routes: Routes = [
-  { path: 'catalog', component: CatalogResourcesComponent }
+  { path: 'catalog', component: CatalogResourcesComponent },
   { path: 'news', component: NewsComponent },
 ];
 
