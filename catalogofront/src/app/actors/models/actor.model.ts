@@ -3,3 +3,9 @@ export interface Actor {
   firstName: string;
   lastName: string;
 }
+
+export interface ActorDTO {
+  id: number;
+  name: string;
+  role: string;
+}

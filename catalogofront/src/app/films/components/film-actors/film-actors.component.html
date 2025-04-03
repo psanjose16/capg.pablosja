@@ -1,0 +1,11 @@
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<div *ngIf="!errorMessage">
+  <ul>
+    <li *ngFor="let actor of actors">
+      <h2>{{ actor.name }}</h2>
+      <p>Role: {{ actor.role }}</p>
+    </li>
+  </ul>
+</div>
