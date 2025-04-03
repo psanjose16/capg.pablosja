@@ -11,6 +11,6 @@ import { ActorService } from './services/actor.service';
   declarations: [],
   imports: [CommonModule, FormsModule, ActorListComponent, ActorDetailsComponent, ActorFormComponent, ActorEditFormComponent],
   providers: [ActorService],
-  exports: [ActorListComponent, ActorDetailsComponent, ActorFormComponent, ActorEditFormComponent],
+  exports: [ActorListComponent, ActorDetailsComponent, ActorFormComponent, ActorEditFormComponent]
 })
 export class ActorsModule {}

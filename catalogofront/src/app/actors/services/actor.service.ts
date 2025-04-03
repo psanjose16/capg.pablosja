@@ -31,4 +31,8 @@ createActor(actor: Actor): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, actor);
   }
 
+  deleteActor(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
 }

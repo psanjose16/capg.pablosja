@@ -11,6 +11,8 @@ export class ActorListComponent implements OnInit {
   actors: Actor[] = [];
   mode: string = 'largo';
   page: number = 1;
+  successMessage!: string;
+  errorMessage!: string | null;
 
   constructor(private actorService: ActorService) {}
 
@@ -44,5 +46,19 @@ export class ActorListComponent implements OnInit {
       this.page--;
       this.fetchActors();
     }
+  }
+
+  deleteActor(id: number): void {
+    this.actorService.deleteActor(id).subscribe(
+      () => {
+        this.successMessage = 'Actor deleted successfully';
+        this.errorMessage = null;
+        this.fetchActors();
+      },
+      (error) => {
+        console.error('Error deleting actor', error);
+        this.errorMessage = 'Error deleting actor: ' + error.message;
+      }
+    );
   }
 }
