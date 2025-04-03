@@ -6,7 +6,6 @@ import { catchError } from 'rxjs/operators';
 import { FilmShortDTO } from '../models/film-short.model';
 import { FilmDetailsDTO } from '../models/film.model';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +28,12 @@ export class FilmService {
 
   createFilm(film: FilmDetailsDTO): Observable<FilmDetailsDTO> {
     return this.http.post<FilmDetailsDTO>(this.apiUrl, film).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateFilm(id: number, film: FilmDetailsDTO): Observable<FilmDetailsDTO> {
+    return this.http.put<FilmDetailsDTO>(`${this.apiUrl}/${id}`, film).pipe(
       catchError(this.handleError)
     );
   }
