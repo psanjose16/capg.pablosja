@@ -18,3 +18,8 @@ export interface FilmEditDTO {
   rating: string;
   length: number;
 }
+
+export interface FilmShortDTO {
+  id: number;
+  title: string;
+}

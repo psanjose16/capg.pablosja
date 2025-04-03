@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Language } from '../models/language.model';
+import { FilmShortDTO } from '../../films/models/film-short.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,12 @@ export class LanguageService {
 
   getAllLanguages(): Observable<Language[]> {
     return this.http.get<Language[]>(this.apiUrl).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getFilmsByLanguageId(id: number): Observable<FilmShortDTO[]> {
+    return this.http.get<FilmShortDTO[]>(`${this.apiUrl}/${id}/peliculas`).pipe(
       catchError(this.handleError)
     );
   }

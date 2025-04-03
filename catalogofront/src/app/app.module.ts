@@ -24,11 +24,12 @@ import { FilmCategoriesComponent } from './films/components/film-categories/film
 import { FilmLikeComponent } from './films/components/film-like/film-like.component';
 import { LanguageListComponent } from './languages/components/language-list/language-list.component';
 import { LanguageService } from './languages/services/language.service';
+import { LanguageFilmsComponent } from './languages/components/language-films/language-films.component';
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent, FilmCreateComponent, FilmEditComponent, FilmDeleteComponent, FilmSearchComponent, FilmEditableComponent, FilmActorsComponent, FilmCategoriesComponent, FilmLikeComponent, LanguageListComponent, LanguageService],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent, FilmCreateComponent, FilmEditComponent, FilmDeleteComponent, FilmSearchComponent, FilmEditableComponent, FilmActorsComponent, FilmCategoriesComponent, FilmLikeComponent, LanguageListComponent, LanguageService, LanguageFilmsComponent],
   providers: [],
 })
 export class AppModule {}
