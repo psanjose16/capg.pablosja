@@ -38,6 +38,12 @@ export class FilmService {
     );
   }
 
+  deleteFilm(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     // Handle error appropriately
     console.error('An error occurred:', error);

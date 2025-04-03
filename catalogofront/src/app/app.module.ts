@@ -16,11 +16,12 @@ import { FilmService } from './films/services/film.service';
 import { FilmDetailsComponent } from './films/components/film-details/film-details.component';
 import { FilmCreateComponent } from './films/components/film-create/film-create.component';
 import { FilmEditComponent } from './films/components/film-edit/film-edit.component';
+import { FilmDeleteComponent } from './films/components/film-delete/film-delete.component';
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent, FilmCreateComponent, FilmEditComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent, FilmListComponent, FilmService, FilmDetailsComponent, FilmCreateComponent, FilmEditComponent, FilmDeleteComponent],
   providers: [],
 })
 export class AppModule {}
