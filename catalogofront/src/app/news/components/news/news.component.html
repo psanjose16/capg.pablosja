@@ -1,0 +1,19 @@
+<div>
+  <h2>Latest News</h2>
+  <label for="filterDate">Filter by Date:</label>
+  <input type="datetime-local" id="filterDate" (change)="onDateChange($event)" />
+</div>
+
+<div *ngIf="newsItems.length > 0">
+  <ul>
+    <li *ngFor="let newsItem of newsItems">
+      <h3>{{ newsItem.title }}</h3>
+      <p>{{ newsItem.date }}</p>
+      <p>{{ newsItem.description }}</p>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>

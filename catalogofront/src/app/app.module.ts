@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { ActorsModule } from './actors/actors.module';
 import { CatalogModule } from './catalog/catalog.module';
 
+
 @NgModule({
   declarations: [],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule],
   providers: [],
 })
 export class AppModule {}
