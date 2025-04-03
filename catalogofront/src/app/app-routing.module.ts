@@ -10,6 +10,8 @@ export const routes: Routes = [
   { path: '**', redirectTo: '/categories' },
   { path: '', redirectTo: '/films', pathMatch: 'full' },
   { path: '**', redirectTo: '/films' },
+  { path: '', redirectTo: '/languages', pathMatch: 'full' },
+  { path: '**', redirectTo: '/languages' },
 ];
 
 @NgModule({

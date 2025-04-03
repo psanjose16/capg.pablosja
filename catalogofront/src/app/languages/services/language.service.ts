@@ -25,6 +25,12 @@ export class LanguageService {
     );
   }
 
+  createLanguage(language: Language): Observable<Language> {
+    return this.http.post<Language>(this.apiUrl, language).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     // Handle error appropriately
     console.error('An error occurred:', error);
