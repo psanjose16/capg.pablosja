@@ -1,0 +1,10 @@
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<div *ngIf="!errorMessage">
+  <ul>
+    <li *ngFor="let language of languages">
+      <h2>{{ language.name }}</h2>
+    </li>
+  </ul>
+</div>
