@@ -10,6 +10,7 @@ import { FilmShortDTO } from '../../films/models/film-short.model';
 })
 export class CategoryService {
   private apiUrl = '/categorias/v1';
+  getCategoryById: any;
 
   constructor(private http: HttpClient) {}
 
@@ -28,6 +29,12 @@ export class CategoryService {
 
   createCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(this.apiUrl, category).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateCategory(id: number, category: Category): Observable<Category> {
+    return this.http.put<Category>(`${this.apiUrl}/${id}`, category).pipe(
       catchError(this.handleError)
     );
   }

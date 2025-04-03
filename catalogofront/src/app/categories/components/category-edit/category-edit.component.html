@@ -1,0 +1,17 @@
+<div *ngIf="successMessage" class="success">
+  {{ successMessage }}
+</div>
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="category.name" required>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description" [(ngModel)]="category.description" required>
+  </div>
+  <button type="submit">Update Category</button>
+</form>
