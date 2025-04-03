@@ -10,11 +10,12 @@ import { CategoryService } from './categories/services/category.service';
 import { CategoryFilmsComponent } from './categories/components/category-films/category-films.component';
 import { CategoryCreateComponent } from './categories/components/category-create/category-create.component';
 import { CategoryEditComponent } from './categories/components/category-edit/category-edit.component';
+import { CategoryDeleteComponent } from './categories/components/category-delete/category-delete.component';
 
 @NgModule({
   declarations: [
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, ActorsModule, AppComponent, CatalogModule, CategoryListComponent, CategoryService, CategoryFilmsComponent, CategoryCreateComponent, CategoryEditComponent, CategoryDeleteComponent],
   providers: [],
 })
 export class AppModule {}
