@@ -44,6 +44,12 @@ export class FilmService {
     );
   }
 
+  searchFilms(criteria: any): Observable<FilmShortDTO[] | FilmDetailsDTO[]> {
+    return this.http.get<FilmShortDTO[] | FilmDetailsDTO[]>(`${this.apiUrl}/filtro`, { params: criteria }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     // Handle error appropriately
     console.error('An error occurred:', error);
