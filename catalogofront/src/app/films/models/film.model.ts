@@ -10,3 +10,11 @@ export interface FilmDetailsDTO {
   rating: string;
   length: number;
 }
+
+export interface FilmEditDTO {
+  id: number;
+  title: string;
+  description: string;
+  rating: string;
+  length: number;
+}

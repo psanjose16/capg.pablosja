@@ -4,7 +4,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FilmShortDTO } from '../models/film-short.model';
-import { FilmDetailsDTO } from '../models/film.model';
+import { FilmDetailsDTO, FilmEditDTO } from '../models/film.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,11 @@ export class FilmService {
   }
 
   getFilmDetails(id: number): Observable<FilmDetailsDTO> {
-    return this.http.get<FilmDetailsDTO>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<FilmDetailsDTO>(`${this.apiUrl}/${id}?mode=details`).pipe(
       catchError(this.handleError)
     );
   }
+
 
   createFilm(film: FilmDetailsDTO): Observable<FilmDetailsDTO> {
     return this.http.post<FilmDetailsDTO>(this.apiUrl, film).pipe(
@@ -50,8 +52,13 @@ export class FilmService {
     );
   }
 
+  getFilmEditable(id: number): Observable<FilmEditDTO> {
+    return this.http.get<FilmEditDTO>(`${this.apiUrl}/${id}?mode=edit`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
-    // Handle error appropriately
     console.error('An error occurred:', error);
     return throwError('Something went wrong; please try again later.');
   }

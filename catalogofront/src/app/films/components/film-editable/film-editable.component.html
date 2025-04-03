@@ -1,0 +1,23 @@
+<div *ngIf="errorMessage" class="error">
+  {{ errorMessage }}
+</div>
+<div *ngIf="film && !errorMessage">
+  <form>
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="film.title" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" [(ngModel)]="film.description" required>
+    </div>
+    <div>
+      <label for="rating">Rating:</label>
+      <input type="text" id="rating" name="rating" [(ngModel)]="film.rating" required>
+    </div>
+    <div>
+      <label for="length">Length:</label>
+      <input type="number" id="length" name="length" [(ngModel)]="film.length" required>
+    </div>
+  </form>
+</div>
