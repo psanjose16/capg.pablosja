@@ -6,6 +6,8 @@ import { catchError } from 'rxjs/operators';
 import { FilmShortDTO } from '../models/film-short.model';
 import { FilmDetailsDTO, FilmEditDTO } from '../models/film.model';
 import { ActorDTO } from '../../actors/models/actor.model';
+import { Category } from '../../categories/models/category.component';
+
 
 
 @Injectable({
@@ -61,6 +63,12 @@ export class FilmService {
 
   getActorsByFilmId(id: number): Observable<ActorDTO[]> {
     return this.http.get<ActorDTO[]>(`${this.apiUrl}/${id}/reparto`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getCategoriesByFilmId(id: number): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.apiUrl}/${id}/categorias`).pipe(
       catchError(this.handleError)
     );
   }
