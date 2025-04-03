@@ -61,4 +61,22 @@ export class ActorListComponent implements OnInit {
       }
     );
   }
+    retireActor(id: number): void {
+      this.actorService.retireActor(id).subscribe(
+        () => {
+          this.successMessage = 'Actor retired successfully';
+          this.errorMessage = null;
+          this.fetchActors();
+        },
+        (error) => {
+          console.error('Error retiring actor', error);
+          this.errorMessage = 'Error retiring actor: ' + error.message;
+        }
+      );
+
+  }
 }
+function retireActor(id: number, number: any) {
+  throw new Error('Function not implemented.');
+}
+

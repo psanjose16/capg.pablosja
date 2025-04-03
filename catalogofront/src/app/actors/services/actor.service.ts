@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Actor } from '../models/actor.model';
+import { Film } from '../../films/models/film.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,9 @@ createActor(actor: Actor): Observable<any> {
   getActorFilms(id: number): Observable<Film[]> {
     return this.http.get<Film[]>(`${this.baseUrl}/${id}/pelis`);
   }
-  
+
+  retireActor(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}/jubilacion`);
+  }
+
 }

@@ -7,6 +7,15 @@
   <ul>
     <li *ngFor="let actor of actors">
       {{ actor.firstName }} {{ actor.lastName }}
+      <button (click)="retireActor(actor.actorId)">Retire</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <ul>
+    <li *ngFor="let actor of actors">
+      {{ actor.firstName }} {{ actor.lastName }}
       <button (click)="deleteActor(actor.actorId)">Delete</button>
     </li>
   </ul>
